@@ -1,0 +1,19 @@
+.user-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* .user-list-ul {
+    list-style: none;
+    padding: 0;
+} */
+
+.user-list-li {
+    margin-bottom: 0.75rem;
+}
+
+.selected-user {
+    border: 1px solid;
+    padding: 1rem;
+}

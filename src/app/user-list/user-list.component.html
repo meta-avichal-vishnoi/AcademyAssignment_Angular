@@ -1,0 +1,19 @@
+<div class="user-list-container">
+  <!-- User List -->
+  <ul>
+    <li *ngFor="let user of users" class="user-list-li">
+      <span><strong>{{ user.firstName }}</strong></span> |
+      <span>{{ user.email }}</span> |
+      <button (click)="showDetails(user)">Show Me</button>
+    </li>
+  </ul>
+
+  <!-- User Details -->
+  <div *ngIf="selectedUser" class="selected-user">
+    <h3>User Details</h3>
+    <p><strong>First Name:</strong> {{ selectedUser.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ selectedUser.lastName }}</p>
+    <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+    <p><strong>Active:</strong> {{ selectedUser.isActive ? 'Yes' : 'No' }}</p>
+  </div>
+</div>
