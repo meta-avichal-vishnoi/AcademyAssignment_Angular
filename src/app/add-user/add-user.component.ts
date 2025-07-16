@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UserLogService } from '../user-log.service'; // ✅ Import the service
 
 interface User {
   firstName: string;
@@ -12,7 +13,7 @@ interface User {
 @Component({
   selector: 'app-add-user',
   standalone: true,
-  imports: [CommonModule, FormsModule], // ✅ Needed for [(ngModel)]
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
@@ -27,9 +28,14 @@ export class AddUserComponent {
 
   users: User[] = [];
 
+  constructor(private userLogService: UserLogService) {} 
+
   addUser() {
-    this.users.push({ ...this.user }); // Copy the user
-    // Reset the form
+    this.users.push({ ...this.user });
+
+    this.userLogService.logMyDetail(this.user);
+
+    // Reset form
     this.user = {
       firstName: '',
       lastName: '',
